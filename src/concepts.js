@@ -62,7 +62,7 @@ exports.updateTranscript = function(transcripts) {
     }
 
     updateTranscriptContent(transcripts);
-    updateTimeline(transcripts, results.concepts);
+ //   updateTimeline(transcripts, results.concepts);
   });
 }
 

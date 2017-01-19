@@ -23,8 +23,10 @@ var AlchemyLanguageV1 = require('watson-developer-cloud/alchemy-language/v1');
 var AuthorizationV1 = require('watson-developer-cloud/authorization/v1');
 var youtube = require('./youtube');
 var cloudant = {
-		 		 url : "https://a1192a94-9b7e-41e1-ad89-9b7b9706fc36-bluemix:04cecff26371b67a588c33d3e36c65489d4da4cddb07617df8aaac516ca5be23@a1192a94-9b7e-41e1-ad89-9b7b9706fc36-bluemix.cloudant.com" 		 		 
+		 		 url : "https://27065a15-9452-48d4-a63c-8c3f540c1870-bluemix:79f409e808a73596080ccf785e4e91337228b90a86c937c95c359a7ff2a809e3@27065a15-9452-48d4-a63c-8c3f540c1870-bluemix.cloudant.com" 		 		 
 };
+// dev space: url : "https://a1192a94-9b7e-41e1-ad89-9b7b9706fc36-bluemix:04cecff26371b67a588c33d3e36c65489d4da4cddb07617df8aaac516ca5be23@a1192a94-9b7e-41e1-ad89-9b7b9706fc36-bluemix.cloudant.com"
+
 
 var app = express();
 
@@ -54,7 +56,7 @@ try {
     url: 'https://stream.watsonplatform.net/speech-to-text/api'
   }, vcapServices.getCredentials('speech_to_text')));
 
-  alchemyLanguage = new AlchemyLanguageV1({});
+//  alchemyLanguage = new AlchemyLanguageV1({});
 
 } catch (error) {
   console.log('Error: ', error);
@@ -80,13 +82,13 @@ app.get('/tos', function(req, res) {
 });
 
 app.post('/api/concepts', function(req, res, next) {
-  alchemyLanguage.concepts(req.body, function(err, result) {
-    if (err)
-      next(err);
-    else
-      res.json(result);
-    }
-  );
+//  alchemyLanguage.concepts(req.body, function(err, result) {
+//    if (err)
+//      next(err);
+//    else
+//      res.json(result);
+//    }
+//  );
 });
 
 app.get('/api/video', function(req, res, next) {
@@ -130,7 +132,7 @@ app.get('/save_transcript', function(request, response) {
 });
 
 app.get('/view_transcript', function(request, response) {
-  db.view('transcript_view', 'transcript-by-title', {keys: ['key1']} , function(err, body) {
+  db.view('transcript_view', 'transcript-view', function(err, body) {
   if (!err) {
     console.log('/view_transcript: ',body);
       var sentences = [];

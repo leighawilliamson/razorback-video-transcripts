@@ -1,17 +1,13 @@
 ---
 declared-services:
-  alchemy-language-service:
-    label: alchemy_api
-    plan: free
   speech-to-text-service:
     label: speech_to_text
     plan: standard
 
 applications:
-- name: tulane-video-demo
+- name: tulane-videotranscript-demo
   path: .
   command: npm start
   memory: 512M
   services:
   - speech-to-text-service
-  - alchemy-language-service
