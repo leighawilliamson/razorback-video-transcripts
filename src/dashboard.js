@@ -92,5 +92,10 @@ $(document).ready(function() {
     window.location = '/';
   });
 
+  $('#edit_btn').on('click', function() {
+    console.log('edit button clicked');
+    window.location = '/show_transcript';
+  });
+
   $('._dashboard--timeline').hide();
 });
